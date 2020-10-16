@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         private DateTime _startTime;
         private TimeSpan _currentElapsedTime = TimeSpan.Zero;
         private TimeSpan _totalElapsedTime = TimeSpan.Zero;
-
+        private Boolean rightClickEnabled = false;
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
         //Mouse actions
@@ -30,6 +30,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            rightClickEnabled = checkBox1.Checked;
             lblInterval.Text = interval.ToString() + " Second(s)";
             _startTime = DateTime.Now;
             myTimer.Tick += new EventHandler(MoveCursor);
@@ -48,7 +49,10 @@ namespace WindowsFormsApp1
             Cursor.Position = new Point(Cursor.Position.X - num1, Cursor.Position.Y - num2);
             Cursor.Clip = new Rectangle(new Point(), new Size());
 
-            DoMouseClick();
+            if (rightClickEnabled)
+            {
+                DoMouseClick();
+            }
 
             var timeSinceStartTime = DateTime.Now - _startTime;
             timeSinceStartTime = new TimeSpan(timeSinceStartTime.Hours,
@@ -91,6 +95,11 @@ namespace WindowsFormsApp1
         {
             interval = Convert.ToInt32(((System.Windows.Forms.Control)sender).Tag);
             lblInterval.Text = interval.ToString() + " Second(s)";
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            rightClickEnabled = checkBox1.Checked;
         }
     }
 }

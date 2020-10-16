@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblInterval = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -206,11 +207,25 @@
             this.lblInterval.TabIndex = 1;
             this.lblInterval.Text = "...";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(395, 158);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(150, 24);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Enable Right Click";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 350);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lblInterval);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -246,6 +261,7 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblInterval;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
