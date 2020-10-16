@@ -3,3 +3,5 @@
 ################################################################################
 
 /StayLoggedIn/bin/Debug/netcoreapp3.1
+/StayLoggedIn/obj
+/.vs/StayLoggedIn

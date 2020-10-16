@@ -7,14 +7,14 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        Cursor cur = new Cursor(Cursor.Current.Handle);
-        Point p = new Point();
-        Size s = new Size();
-        int k = 0;
-        int inteval = 5;
+        Timer myTimer = new Timer();
+        int interval = 30;
         int positionX = -100;
         int positionY = 100;
+
+        private DateTime _startTime;
+        private TimeSpan _currentElapsedTime = TimeSpan.Zero;
+        private TimeSpan _totalElapsedTime = TimeSpan.Zero;
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
@@ -30,22 +30,35 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            lblInterval.Text = interval.ToString() + " Second(s)";
+            _startTime = DateTime.Now;
             myTimer.Tick += new EventHandler(MoveCursor);
-            myTimer.Interval = inteval*1000;
+            int tmpinteval = new Random().Next(interval - 3, interval);//random 
+            myTimer.Interval = tmpinteval * 1000;
             myTimer.Start();
+
         }
         private void MoveCursor(Object myObject, EventArgs myEventArgs)
         {
+            _totalElapsedTime = _currentElapsedTime;
             // Set the Current cursor, move the cursor's Position,
             // and set its clipping rectangle to the form. 
             int num1 = new Random().Next(positionX, positionY);
             int num2 = new Random().Next(positionX, positionY);
-            cur = new Cursor(Cursor.Current.Handle);
             Cursor.Position = new Point(Cursor.Position.X - num1, Cursor.Position.Y - num2);
-            Cursor.Clip = new Rectangle(p, s);
+            Cursor.Clip = new Rectangle(new Point(), new Size());
+
             DoMouseClick();
-            k += inteval;
-            label1.Text =  k % 60 == 0 ? (k / 60).ToString()+" Minute(s)" : k+ " Seconds" ;
+
+            var timeSinceStartTime = DateTime.Now - _startTime;
+            timeSinceStartTime = new TimeSpan(timeSinceStartTime.Hours,
+                                              timeSinceStartTime.Minutes,
+                                              timeSinceStartTime.Seconds);
+            _currentElapsedTime = timeSinceStartTime + _totalElapsedTime;
+            label1.Text = _currentElapsedTime.ToString();
+
+            int tmpinteval = new Random().Next(interval - 4, interval + 4);//random 
+            myTimer.Interval = tmpinteval * 1000;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,15 +67,6 @@ namespace WindowsFormsApp1
             Application.Exit();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            inteval = 5;
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            inteval = 10;
-        }
         public void DoMouseClick()
         {
             //Call the imported function with the cursor's current position
@@ -74,13 +78,19 @@ namespace WindowsFormsApp1
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             positionX = -100;
-            positionY = 100;
+            positionY = 200;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             positionX = -200;
-            positionY = 200;
+            positionY = 400;
+        }
+
+        private void radioButtonsGroup_CheckedChanged(object sender, EventArgs e)
+        {
+            interval = Convert.ToInt32(((System.Windows.Forms.Control)sender).Tag);
+            lblInterval.Text = interval.ToString() + " Second(s)";
         }
     }
 }
