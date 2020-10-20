@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         private TimeSpan _currentElapsedTime = TimeSpan.Zero;
         private TimeSpan _totalElapsedTime = TimeSpan.Zero;
         private Boolean rightClickEnabled = false;
+        private Boolean escapeEnabled = false;
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
         //Mouse actions
@@ -39,6 +40,13 @@ namespace WindowsFormsApp1
             myTimer.Start();
 
         }
+        private void ReSetTimer()
+        {
+            myTimer.Stop();
+            int tmpinteval = new Random().Next(interval - 3, interval);//random 
+            myTimer.Interval = tmpinteval * 1000;
+            myTimer.Start();
+        }
         private void MoveCursor(Object myObject, EventArgs myEventArgs)
         {
             _totalElapsedTime = _currentElapsedTime;
@@ -52,7 +60,10 @@ namespace WindowsFormsApp1
             if (rightClickEnabled)
             {
                 DoMouseClick();
-                SendKeys.Send("{ESC}");//closing right click menu
+                if (escapeEnabled)
+                {
+                    SendKeys.Send("{ESC}");//closing right click menu
+                }
             }
 
             var timeSinceStartTime = DateTime.Now - _startTime;
@@ -94,13 +105,20 @@ namespace WindowsFormsApp1
 
         private void radioButtonsGroup_CheckedChanged(object sender, EventArgs e)
         {
+
             interval = Convert.ToInt32(((System.Windows.Forms.Control)sender).Tag);
             lblInterval.Text = interval.ToString() + " Second(s)";
+            ReSetTimer();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             rightClickEnabled = checkBox1.Checked;
+        }
+
+        private void chkEscape_CheckedChanged(object sender, EventArgs e)
+        {
+            escapeEnabled = chkEscape.Checked;
         }
     }
 }

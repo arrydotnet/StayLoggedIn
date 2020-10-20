@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblInterval = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkEscape = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -220,11 +221,25 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // chkEscape
+            // 
+            this.chkEscape.AutoSize = true;
+            this.chkEscape.Checked = true;
+            this.chkEscape.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEscape.Location = new System.Drawing.Point(395, 188);
+            this.chkEscape.Name = "chkEscape";
+            this.chkEscape.Size = new System.Drawing.Size(223, 24);
+            this.chkEscape.TabIndex = 5;
+            this.chkEscape.Text = "Click Escape After Right Click";
+            this.chkEscape.UseVisualStyleBackColor = true;
+            this.chkEscape.CheckedChanged += new System.EventHandler(this.chkEscape_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 350);
+            this.Controls.Add(this.chkEscape);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lblInterval);
             this.Controls.Add(this.label3);
@@ -262,6 +277,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblInterval;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkEscape;
     }
 }
 
