@@ -52,6 +52,7 @@ namespace WindowsFormsApp1
             if (rightClickEnabled)
             {
                 DoMouseClick();
+                SendKeys.Send("{ESC}");//closing right click menu
             }
 
             var timeSinceStartTime = DateTime.Now - _startTime;
