@@ -6,4 +6,39 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="obj\Debug\netcoreapp3.1\.NETCoreApp,Version=v3.1.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\netcoreapp3.1\StayLoggedIn.AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netcoreapp3.1\StayLoggedIn.deps.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\StayLoggedIn.runtimeconfig.dev.json" />
+    <Content Include="bin\Debug\netcoreapp3.1\StayLoggedIn.runtimeconfig.json" />
+    <Content Include="obj\Debug\netcoreapp3.1\StayLoggedIn.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\netcoreapp3.1\StayLoggedIn.designer.deps.json" />
+    <Content Include="obj\Debug\netcoreapp3.1\StayLoggedIn.designer.runtimeconfig.json" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="obj\StayLoggedIn.csproj.nuget.dgspec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp3.1\StayLoggedIn.dll" />
+    <None Include="bin\Debug\netcoreapp3.1\StayLoggedIn.exe" />
+    <None Include="bin\Debug\netcoreapp3.1\StayLoggedIn.pdb" />
+    <None Include="obj\Debug\netcoreapp3.1\apphost.exe" />
+    <None Include="obj\Debug\netcoreapp3.1\StayLoggedIn.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\StayLoggedIn.assets.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\StayLoggedIn.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\StayLoggedIn.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\StayLoggedIn.dll" />
+    <None Include="obj\Debug\netcoreapp3.1\StayLoggedIn.exe" />
+    <None Include="obj\Debug\netcoreapp3.1\StayLoggedIn.genruntimeconfig.cache" />
+    <None Include="obj\Debug\netcoreapp3.1\StayLoggedIn.pdb" />
+    <None Include="obj\Debug\netcoreapp3.1\WindowsFormsApp1.Form1.resources" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\StayLoggedIn.csproj.nuget.g.props" />
+    <None Include="obj\StayLoggedIn.csproj.nuget.g.targets" />
+  </ItemGroup>
+
 </Project>
