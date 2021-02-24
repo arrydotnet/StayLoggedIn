@@ -57,7 +57,8 @@ namespace WindowsFormsApp1
             Cursor.Position = new Point(Cursor.Position.X - num1, Cursor.Position.Y - num2);
             Cursor.Clip = new Rectangle(new Point(), new Size());
 
-            if (rightClickEnabled)
+            int flag = new Random().Next(0, 2);//random 
+            if (rightClickEnabled && flag > 0)
             {
                 DoMouseClick();
                 if (escapeEnabled)
@@ -119,6 +120,21 @@ namespace WindowsFormsApp1
         private void chkEscape_CheckedChanged(object sender, EventArgs e)
         {
             escapeEnabled = chkEscape.Checked;
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            bool flag = btnPause.Text == "Pause";
+            if (flag)
+            {
+                myTimer.Stop();
+                btnPause.Text = "ReStart";
+            }
+            else
+            {
+                myTimer.Start();
+                btnPause.Text = "Pause";
+            }
         }
     }
 }
