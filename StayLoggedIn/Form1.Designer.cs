@@ -48,6 +48,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chkEscape = new System.Windows.Forms.CheckBox();
             this.btnPause = new System.Windows.Forms.Button();
+            this.labelAct = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -115,7 +116,7 @@
             // radioButton9
             // 
             this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(6, 286);
+            this.radioButton9.Location = new System.Drawing.Point(6, 288);
             this.radioButton9.Name = "radioButton9";
             this.radioButton9.Size = new System.Drawing.Size(102, 24);
             this.radioButton9.TabIndex = 4;
@@ -289,11 +290,21 @@
             this.btnPause.UseVisualStyleBackColor = true;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
+            // labelAct
+            // 
+            this.labelAct.AutoSize = true;
+            this.labelAct.Location = new System.Drawing.Point(277, 413);
+            this.labelAct.Name = "labelAct";
+            this.labelAct.Size = new System.Drawing.Size(18, 20);
+            this.labelAct.TabIndex = 7;
+            this.labelAct.Text = "...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 442);
+            this.Controls.Add(this.labelAct);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.chkEscape);
             this.Controls.Add(this.checkBox1);
@@ -338,6 +349,7 @@
         private System.Windows.Forms.RadioButton radioButton9;
         private System.Windows.Forms.RadioButton radioButton8;
         private System.Windows.Forms.RadioButton radioButton10;
+        private System.Windows.Forms.Label labelAct;
     }
 }
 
