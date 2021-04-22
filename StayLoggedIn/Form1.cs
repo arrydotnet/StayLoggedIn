@@ -31,19 +31,13 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            rightClickEnabled = checkBox1.Checked;
-            lblInterval.Text = interval.ToString() + " Second(s)";
-            _startTime = DateTime.Now;
-            myTimer.Tick += new EventHandler(MoveCursor);
-            int tmpinteval = new Random().Next(interval - 3, interval);//random 
-            myTimer.Interval = tmpinteval * 1000;
-            myTimer.Start();
 
         }
         private void ReSetTimer()
         {
             myTimer.Stop();
-            int tmpinteval = new Random().Next(interval - 3, interval);//random 
+            int tmpTenPerc = interval / 10;
+            int tmpinteval = new Random().Next(interval - tmpTenPerc, interval+ tmpTenPerc);//random 
             myTimer.Interval = tmpinteval * 1000;
             myTimer.Start();
         }
@@ -124,17 +118,7 @@ namespace WindowsFormsApp1
 
         private void btnPause_Click(object sender, EventArgs e)
         {
-            bool flag = btnPause.Text == "Pause";
-            if (flag)
-            {
-                myTimer.Stop();
-                btnPause.Text = "ReStart";
-            }
-            else
-            {
-                myTimer.Start();
-                btnPause.Text = "Pause";
-            }
+
         }
     }
 }
