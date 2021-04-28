@@ -41,11 +41,12 @@ namespace WindowsFormsApp1
             myTimer.Interval = tmpinteval * 1000;
             labelAct.Text = (tmpinteval).ToString();
             myTimer.Start();
+            // mytimerLbl.Text = myTimer.Interval.ToString();
         }
         private void ReSetTimer()
         {
             myTimer.Stop();
-            int tmpTenPerc = (interval * 30) / 100; 
+            int tmpTenPerc = (interval * 30) / 100;
             int tmpinteval = new Random().Next(interval - tmpTenPerc, interval);//random 
             myTimer.Interval = tmpinteval * 1000;
             labelAct.Text = (tmpinteval).ToString();
@@ -78,8 +79,22 @@ namespace WindowsFormsApp1
             _currentElapsedTime = timeSinceStartTime + _totalElapsedTime;
             label1.Text = _currentElapsedTime.ToString();
 
-            int tmpinteval = new Random().Next(interval - 4, interval + 4);//random 
+            //int tmpinteval = new Random().Next(interval - 4, interval + 4);//random 
+
+            int tmpTenPerc = new Random().Next((interval / 2), interval);//50%
+            int tmpFourtyPerc = new Random().Next((interval / 3), interval);//30%
+
+            int tmpinteval = new Random().Next(interval - tmpTenPerc, interval + tmpFourtyPerc);//random 
+
             myTimer.Interval = tmpinteval * 1000;
+            //labelAct.Text += ","+ (tmpinteval).ToString();
+            int kindex = labelAct.Text.IndexOf(',');
+            labelAct.Text = labelAct.Text.Split(',').Length > 4
+                ? labelAct.Text.Substring(kindex + 1) +" , "+ (tmpinteval).ToString()
+                : labelAct.Text + " , " + (tmpinteval).ToString();
+            //labelAct.Text = (tmpinteval).ToString();
+            //mytimerLbl.Text = myTimer.Interval.ToString();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
