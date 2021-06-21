@@ -125,10 +125,15 @@ namespace WindowsFormsApp1
 
         private void radioButtonsGroup_CheckedChanged(object sender, EventArgs e)
         {
-
-            interval = Convert.ToInt32(((System.Windows.Forms.Control)sender).Tag);
-            lblInterval.Text = interval.ToString() + " Second(s)";
-            ReSetTimer();
+            if (((RadioButton)sender).Checked)
+            {
+                RadioButton rb = (RadioButton)sender;
+                interval = Convert.ToInt32(rb.Tag);
+                lblInterval.Text = interval.ToString() + " Second(s)";
+                //MessageBox.Show("interval::" + interval.ToString());
+                ReSetTimer();
+            }
+          
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
